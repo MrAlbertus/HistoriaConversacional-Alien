@@ -2,7 +2,7 @@ public class Objectes {
     private String tipus;
     private String posicio;
     private String descripcio;
-    private boolean util;
+    private boolean util;   
 
     public Objectes(String tipus, String posicio, String descripcio, boolean util){
         this.tipus = tipus;
