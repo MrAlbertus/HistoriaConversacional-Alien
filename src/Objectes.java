@@ -1,3 +1,4 @@
+package src;
 public class Objectes {
     private String tipus;
     private String posicio;
