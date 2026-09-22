@@ -8,5 +8,6 @@ public class Company extends Entitat{
         this.portaTargeta = portaTargeta;
     }
 
+
     
 }
