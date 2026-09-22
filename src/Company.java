@@ -1,6 +1,12 @@
 public class Company extends Entitat{
-    
-    public Company(String nom, int vida, String posicio, Boolean desperts){
+    private Boolean despertar;
+    private Boolean portaTargeta;
+
+    public Company(String nom, int vida, String posicio, Boolean despertar, Boolean portaTargeta){
         super(nom, vida, posicio);
+        this.despertar = despertar;
+        this.portaTargeta = portaTargeta;
     }
+
+    
 }
