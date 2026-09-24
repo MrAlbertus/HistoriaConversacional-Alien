@@ -1,8 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     Scanner sc = new Scanner(System.in);
     
+    private mapa mapa;
+    private Jugador jugador;
+    private boolean partidaActiva;
 
     public static void main(String[] args) {
 
@@ -12,6 +16,12 @@ public class App {
     }
 
     public void inicialitzar() {
+
+        // INICIALITZAR MAPA
+        this.mapa = new mapa();
+
+        //INICIALITZAR PERSONATGE (EN UN FUTUR PODER PREGUNTAR A l'USUARI EL NOM I FER-HO PERSONALITZAT)
+        this.jugador = new Jugador("Bond", 100, "7", new ArrayList<Objectes>(), false);
         
         // objectes de cada un dels ítems que s'utilitzen al joc
         Objectes llanterna = new Objectes("Llanterna", "x",
@@ -27,6 +37,7 @@ public class App {
                 true);
         Objectes einaDelTaller = new Objectes("Eina del taller", "Taller",
                 "Petita caixa d’eines antiga. Es pot utilitzar per reparar la nau!", true);
+            
     }
 
     public void menuP() {
@@ -38,9 +49,6 @@ public class App {
     }
 
     public void principal(){
-        // FALTA PROGRAMAR QUE LA LLANTERNA APAREGUI DE MANERA ALEATÒRIA
-        // FALTA PROGRAMAR L'INVENTARI AMB UN ARRAYLIST QUE S'ACTUALITZI QUAN EL JUGADOR
-        // AGAFI UN OBJECTE
 
         // variable que permeti finalitzar el joc (sortir del bucle del joc)
         boolean jugant = true;
@@ -141,7 +149,7 @@ public class App {
 
     while (partidaActiva) {
         System.out.print("\n> ");
-        String accio = sc.nextLine().toLowerCase().trim();
+        String accio = sc.nextLine().toLowerCase();
 
         switch (accio) {
             case "ajuda":
@@ -154,7 +162,7 @@ public class App {
 
             case "mirar":
                 System.out.println("Mires al teu voltant...");
-                // Aquí mostrarás la sala actual y sus objetos.
+                // Aquí anirà el codi per realitzar l'acció "mirar" la qual et digui quins objectes hi ha a la habitació on estas
                 break;
 
             case "moure":
@@ -162,8 +170,7 @@ public class App {
                 break;
 
             case "inventari":
-                System.out.println("Encara no portes cap objecte.");
-                // Más adelante mostrarás aquí tu ArrayList de inventario.
+                // Aquí es mostrarà l'ArrayList de l'inventari (en cas de no tenir cap objecte, es mostrarà buit o et dira que no tens cap objecte)
                 break;
 
             case "agafar":
@@ -171,7 +178,7 @@ public class App {
                 String objecteAgafar = sc.nextLine();
 
                 System.out.println("Has intentat agafar: " + objecteAgafar);
-                // Aquí comprobarás si está en la sala y lo añadirás al inventario.
+                //Aquí haurem de posar el codi per tal de que verifiqui que l'objecte estigui a la sala i te l'afegeixi a l'inventari
                 break;
 
             case "usar":
@@ -179,7 +186,7 @@ public class App {
                 String objecteUsar = sc.nextLine();
 
                 System.out.println("Has intentat utilitzar: " + objecteUsar);
-                // Aquí programarás el efecto de cada objeto.
+                // Aquí anirà el codi de cada un dels objectes (quan l'utilitzin)
                 break;
 
             case "sortir":
@@ -206,8 +213,56 @@ public void mostrarManual() {
     System.out.println("===========================================");
 }
 public void moureJugador(){
-    System.out.println("A quina habitació et vols moure?");
-}
-}
 
+    int posActual = Integer.parseInt(jugador.getPosicio());
+    Habitacio habActual = mapa.getHabitacio(posActual);
+
+    mostrarMapa();
+    System.out.println("Ets a: " + habActual.getNom());
+    System.out.println("Cap a quina direcció et vols moure? (Dreta, esquerra, adalt o abaix)");
+    String direccio = sc.nextLine().toLowerCase();
+
+    //DIRECCIONS
+    
+    int desti = -1;
+    
+    if (direccio.equals("adalt")) {
+        desti = habActual.getAdalt();
+    } else if (direccio.equals("abaix")) {
+        desti = habActual.getAbaix();
+    } else if (direccio.equals("esquerra")) {
+        desti = habActual.getEsquerra();
+    } else if (direccio.equals("dreta")) {
+        desti = habActual.getDreta();
+    } else {
+        System.out.println("Direcció no vàlida! Tria entre: adalt, abaix, esquerra o dreta.");
+        return;
+    }
+
+    if (desti != -1) {
+            // Condició de mort: entrar a la Sala Sortida Exterior (sala 8) sense vestit
+            if (desti == 8 && !jugador.getVestitPosat()) {
+                System.out.println("\n========================================================");
+                System.out.println("ALERTA! Has obert la porta exterior sense el vestit!");
+                System.out.println("L'aire s'escapa al buit i et quedes sense oxigen a l'instant.");
+                System.out.println("HAS MORT. FI DE LA PARTIDA.");
+                System.out.println("========================================================");
+                partidaActiva = false;
+                return;
+            }
+
+    // Actualitzem la posició del jugador
+        // 1. Convertim el número 'desti' a text i actualitzem la posició del personatge
+            jugador.setPosicio(String.valueOf(desti));
+
+            // 2. Busquem la nova habitació al mapa amb el nou índex
+            Habitacio habNova = mapa.getHabitacio(desti);
+
+            // 3. Mostrem la confirmació del trasllat i la descripció de la sala
+            System.out.println("\n-------------------------------------------");
+            System.out.println("T'has mogut a: " + habNova.getNom());
+            System.out.println(habNova.getDescripcio());
+            System.out.println("-------------------------------------------");
+    }}
+}
 

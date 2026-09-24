@@ -17,7 +17,7 @@ public class Habitacio {
         setAbaix(abaix);
         setEsquerra(esquerra);
         setDreta(dreta);
-        this.objectes = new ArrayList<>(); // crea la arraylist pels objectes en cada habitació.    
+        this.objectes = new ArrayList<>(); // crea l'arraylist pels objectes en cada habitació.    
     }
 
     public void setNom(String nom){

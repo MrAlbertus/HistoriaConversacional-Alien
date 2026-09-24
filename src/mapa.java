@@ -9,104 +9,111 @@ public class mapa {
     }
 
     public void crearMapa() {
-        // Índex 0: TALLERS
+        // Posicio 0: TALLERS
         llistaHabitacions.add(new Habitacio(
             "Tallers",
             "Zona de manteniment plena de peces de recanvi i eines pesades.",
-            -1, // adalt
-            2,  // abaix -> Oficines
-            -1, // esquerra
-            -1  // dreta
+            -1, // adalt NO ES POT
+            2,  // abaix es Oficines
+            -1, // esquerra NO ES POT
+            -1  // dreta NO ES POT
         ));
 
-        // Índex 1: VESTUARI
+        // Posicio 1: VESTUARI
         llistaHabitacions.add(new Habitacio(
             "Vestuari",
             "Taquilles metàl·liques i vestits espacials de recanvi.",
-            -1, // adalt
-            5,  // abaix -> Cuina
-            -1, // esquerra
-            2   // dreta -> Oficines
+            -1, // adalt NO ES POT
+            5,  // abaix es Cuina
+            -1, // esquerra NO ES POT
+            2   // dreta es Oficines
         ));
 
-        // sala Oficines
+        // Posicio 2: OFICINES
         llistaHabitacions.add(new Habitacio(
             "Oficines",
             "Terminals d'ordinador amb informes i registres de la tripulació.",
-            0,  // adalt -> Tallers
-            4,  // abaix -> Comandament
-            1,  // esquerra -> Vestuari
-            3   // dreta -> Banys
+            0,  // adalt es Tallers
+            4,  // abaix es Comandament
+            1,  // esquerra es Vestuari
+            3   // dreta es Banys
         ));
 
-        // sala Banys
+        // Posicio 3: BANYS
         llistaHabitacions.add(new Habitacio(
             "Banys",
             "Instal·lacions sanitàries bàsiques de la nau.",
-            -1, // adalt
-            7,  // abaix -> Dormitori
-            2,  // esquerra -> Oficines
-            -1  // dreta
+            -1, // adalt NO ES POT
+            7,  // abaix es Dormitori
+            2,  // esquerra es Oficines
+            -1  // dreta NO ES POT
         ));
 
-        // Índex 4: COMANDAMENT
+        // Posicio 4: COMANDAMENT
         llistaHabitacions.add(new Habitacio(
             "Comandament",
             "El pont de comandament central amb el timó i sistemes de navegació.",
-            2,  // adalt -> Oficines
-            6,  // abaix -> Menjador
-            -1, // esquerra
-            -1  // dreta
+            2,  // adalt es Oficines
+            6,  // abaix es Menjador
+            -1, // esquerra NO ES POT
+            -1  // dreta NO ES POT
         ));
 
-        // Índex 5: CUINA
+        // Posicio 5: CUINA
         llistaHabitacions.add(new Habitacio(
             "Cuina",
-            "Rebost i dispensadors de menjar liofilitzat.",
-            1,  // adalt -> Vestuari
-            -1, // abaix
-            -1, // esquerra
-            6   // dreta -> Menjador
+            "Lloc on .",
+            1,  // adalt es Vestuari
+            -1, // abaix NO ES POT
+            -1, // esquerra NO ES POT
+            6   // dreta es Menjador
         ));
 
-        // sala Menjador
+        // Posicio 6: MENJADOR
         llistaHabitacions.add(new Habitacio(
             "Menjador",
-            "Taules llargues on es reunia la tripulació per menjar i descansar.",
-            4,  // adalt -> Comandament
-            8,  // abaix -> Sala Sortida Exterior
-            5,  // esquerra -> Cuina
-            7   // dreta -> Dormitori
+            "Taules on es reuneix la tripulació per menjar.",
+            4,  // adalt es Comandament
+            8,  // abaix es Sala Sortida Exterior
+            5,  // esquerra es Cuina
+            7   // dreta es Dormitori
         ));
 
-        // sala Dormitori
+        // Posicio 7: DORMITORI
         llistaHabitacions.add(new Habitacio(
             "Dormitori",
-            "Lliteres encastades a la paret per al descans dels tripulants.",
-            3,  // adalt -> Banys
-            -1, // abaix
-            6,  // esquerra -> Menjador
-            -1  // dreta
+            "Lliteres incrustades a la paret on els tripulants de la nau dormen.",
+            3,  // adalt es Banys
+            -1, // abaix NO ES POT
+            6,  // esquerra es Menjador
+            -1  // dreta NO ES POT
         ));
 
-        // sala SORTIDA exterior
+        // Posicio 8: SALA SORTIDA EXTERIOR
         llistaHabitacions.add(new Habitacio(
             "Sala Sortida Exterior",
-            "La resclosa d'aire pressuritzada que dona accés a l'espai exterior.",
-            6,  // adalt -> Menjador
-            9,  // abaix -> Propulsors
-            -1, // esquerra
-            -1  // dreta
+            "La comporta que dona accés a l'espai exterior.",
+            6,  // adalt es Menjador
+            9,  // abaix es Propulsors
+            -1, // esquerra NO ES POT
+            -1  // dreta NO ES POT
         ));
 
-        // sala Propulsors
+        // Posicio 9: PROPULSORS
         llistaHabitacions.add(new Habitacio(
             "Propulsors",
             "La sala dels motors principals amb una forta vibració de fons.",
-            8,  // adalt -> Sala Sortida Exterior
-            -1, // abaix
-            -1, // esquerra
-            -1  // dreta
+            8,  // adalt es Sala Sortida Exterior
+            -1, // abaix NO ES POT
+            -1, // esquerra NO ES POT
+            -1  // dreta NO ES POT
         ));
+    }
+
+    public Habitacio getHabitacio(int index) {
+        if (index >= 0 && index < llistaHabitacions.size()) {
+            return llistaHabitacions.get(index);
+        }
+        return null;
     }
 }
