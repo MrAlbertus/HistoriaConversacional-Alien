@@ -1,3 +1,4 @@
+
 public class Company extends Entitat{
     private Boolean despertar;
     private Boolean portaTargeta;
