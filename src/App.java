@@ -53,18 +53,11 @@ public class App {
             switch (opcioMenu) {
                 case 1:
                     //INICI DEL JOC
-                    System.out.println("La nau PIAXII explora l'espai inhòspit en direcció al planeta SUMMEM on es creu que hi poden haver les condicions idònies per arrelar una nova vida.");
-                    System.out.println("Desrpés d'un llarg període d'hivernació provocada pel llarg viatge, el capità Bond es desperta del son induït...");
-                    System.out.println("iHall: Que tal ha dormit capità Bond? Em sap greu destorbar-lo però he detectat una anomalia a la nau. S'ha de reparar immediatament");
-                    System.out.println("Bond: Coi de ferralla intel·ligent!");
-                    System.out.println("En Bond està altament irritat ja que el somni no podia ser d'allò més excitant i realista...");
-                    System.out.println("Bond: Espero que hagi estat indispensable que haver-me destorbat del son! Sinó prepara't per que et programi unes quantes sessions de Treball cooperatiu amb un pedagog inspirat...");
-                    System.out.println("iHall: Li garanteixo capità que no és una falsa alarma, no m'arriscaria a patir un càstig similar...");
-                    System.out.println("Bond: Està bé iHall, dona'm l'informe de la situació i anem per feina!");
-                    System.out.println("iHall: Aqui va l'informe... Resulta que hem xocat contre un petit aeròlit que ha provocat petits danys al sistema de propulsió de la nau els quals necessiten intervenció humana.");
-                    System.out.println("iHall: El teu objectiu és fer-te amb l'eina de reparació que està al taller de la nau i reparar els danys dels propulsors de la nau.");
-                    System.out.println("Aquest és el mapa de la nau: ");
+                    textIntro();
                     mostrarMapa();
+
+                    //JUGABILITAT CODIG
+
                     break;
                 case 2: 
                     jugant = false;
@@ -112,7 +105,21 @@ public class App {
         "                     │PROPULS│\n" +
         "                     │  ORS  │\n" +
         "                     └───────┘"
-    );
-}
+    ); 
+    }
+
+    public void textIntro(){
+            System.out.println("La nau PIAXII explora l'espai inhòspit en direcció al planeta SUMMEM on es creu que hi poden haver les condicions idònies per arrelar una nova vida.");
+            System.out.println("Desrpés d'un llarg període d'hivernació provocada pel llarg viatge, el capità Bond es desperta del son induït...");
+            System.out.println("iHall: Que tal ha dormit capità Bond? Em sap greu destorbar-lo però he detectat una anomalia a la nau. S'ha de reparar immediatament");
+            System.out.println("Bond: Coi de ferralla intel·ligent!");
+            System.out.println("En Bond està altament irritat ja que el somni no podia ser d'allò més excitant i realista...");
+            System.out.println("Bond: Espero que hagi estat indispensable que haver-me destorbat del son! Sinó prepara't per que et programi unes quantes sessions de Treball cooperatiu amb un pedagog inspirat...");
+            System.out.println("iHall: Li garanteixo capità que no és una falsa alarma, no m'arriscaria a patir un càstig similar...");
+            System.out.println("Bond: Està bé iHall, dona'm l'informe de la situació i anem per feina!");
+            System.out.println("iHall: Aqui va l'informe... Resulta que hem xocat contre un petit aeròlit que ha provocat petits danys al sistema de propulsió de la nau els quals necessiten intervenció humana.");
+            System.out.println("iHall: El teu objectiu és fer-te amb l'eina de reparació que està al taller de la nau i reparar els danys dels propulsors de la nau.");
+            System.out.println("Aquest és el mapa de la nau: ");
+    }
 }
 
