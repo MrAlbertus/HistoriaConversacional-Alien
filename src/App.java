@@ -6,7 +6,7 @@ public class App {
     
     private mapa mapa;
     private Jugador jugador;
-    private boolean partidaActiva;
+    private boolean partidaActiva = true;
 
     public static void main(String[] args) {
 
@@ -143,8 +143,7 @@ public class App {
             System.out.println("Aquest és el mapa de la nau: ");
     }
     public void metodeJoc() {
-    boolean partidaActiva = true;
-
+        
     System.out.println("\nEscriu 'ajuda' per veure les accions possibles.");
 
     while (partidaActiva) {
@@ -228,12 +227,16 @@ public void moureJugador(){
     
     if (direccio.equals("adalt")) {
         desti = habActual.getAdalt();
+        System.out.println(desti);
     } else if (direccio.equals("abaix")) {
         desti = habActual.getAbaix();
+        System.out.println(desti);
     } else if (direccio.equals("esquerra")) {
         desti = habActual.getEsquerra();
+        System.out.println(desti);
     } else if (direccio.equals("dreta")) {
         desti = habActual.getDreta();
+        System.out.println(desti);
     } else {
         System.out.println("Direcció no vàlida! Tria entre: adalt, abaix, esquerra o dreta.");
         return;

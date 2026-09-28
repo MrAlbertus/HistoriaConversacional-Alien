@@ -62,7 +62,7 @@ public class mapa {
         // Posicio 5: CUINA
         llistaHabitacions.add(new Habitacio(
             "Cuina",
-            "Lloc on .",
+            "Lloc on es fa el menjar de tota la tripulació",
             1,  // adalt es Vestuari
             -1, // abaix NO ES POT
             -1, // esquerra NO ES POT
