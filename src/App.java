@@ -37,6 +37,14 @@ public class App {
                 true);
         Objectes einaDelTaller = new Objectes("Eina del taller", "Taller",
                 "Petita caixa d’eines antiga. Es pot utilitzar per reparar la nau!", true);
+
+        // Afegim cada objecte a l'habitació on es troba.
+        mapa.getHabitacio(0).afegirObjecte(einaDelTaller);       // Tallers
+        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta);   // Vestuari
+        mapa.getHabitacio(2).afegirObjecte(targetaPersonal);    // Oficines
+        mapa.getHabitacio(5).afegirObjecte(donuts);             // Cuina
+        mapa.getHabitacio(7).afegirObjecte(llanterna);          // Dormitori
+        mapa.getHabitacio(7).afegirObjecte(targetaCompany);     // Dormitori
             
     }
 
@@ -143,7 +151,7 @@ public class App {
             System.out.println("Aquest és el mapa de la nau: ");
     }
     public void metodeJoc() {
-        
+
     System.out.println("\nEscriu 'ajuda' per veure les accions possibles.");
 
     while (partidaActiva) {
@@ -160,8 +168,7 @@ public class App {
                 break;
 
             case "mirar":
-                System.out.println("Mires al teu voltant...");
-                // Aquí anirà el codi per realitzar l'acció "mirar" la qual et digui quins objectes hi ha a la habitació on estas
+                mirarHabitacioActual();
                 break;
 
             case "moure":
@@ -198,6 +205,17 @@ public class App {
                 break;
         }
     }
+}
+public void mirarHabitacioActual() {
+    int posicio = Integer.parseInt(jugador.getPosicio());
+    Habitacio habitacioActual = mapa.getHabitacio(posicio);
+
+    if (habitacioActual == null) {
+        System.out.println("No s'ha pogut trobar l'habitació actual.");
+        return;
+    }
+
+    habitacioActual.mirar();
 }
 public void mostrarManual() {
     System.out.println("\n========== MANUAL D'INSTRUCCIONS ==========");

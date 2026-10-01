@@ -45,6 +45,21 @@ public class Habitacio {
         this.objectes.remove(obj);
     }
 
+    public void mirar() {
+        System.out.println("\n" + nom);
+        System.out.println(descripcio);
+
+        if (objectes.isEmpty()) {
+            System.out.println("No hi ha cap objecte en aquesta habitació.");
+            return;
+        }
+
+        System.out.println("Objectes que hi ha:");
+        for (Objectes objecte : objectes) {
+            System.out.println("- " + objecte.getTipus() + ": " + objecte.getDescripcio());
+        }
+    }
+
 
     // pos Adalt
     public void setAdalt(int adalt){

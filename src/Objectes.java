@@ -37,6 +37,7 @@ public class Objectes {
     public void setUtil(boolean util){
         this.util = util;
     }
+    
 
     //Altres mètodes
 
