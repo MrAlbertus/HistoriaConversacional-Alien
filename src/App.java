@@ -8,6 +8,8 @@ public class App {
     private Jugador jugador;
     private boolean partidaActiva = true;
 
+    private ArrayList<Objectes> objectesJoc;
+
     public static void main(String[] args) {
 
         App p = new App();
@@ -19,6 +21,8 @@ public class App {
 
         // INICIALITZAR MAPA
         this.mapa = new mapa();
+
+        this.objectesJoc = new ArrayList<Objectes>();
 
         //INICIALITZAR PERSONATGE (EN UN FUTUR PODER PREGUNTAR A l'USUARI EL NOM I FER-HO PERSONALITZAT)
         this.jugador = new Jugador("Bond", 100, "7", new ArrayList<Objectes>(), false);
@@ -38,6 +42,7 @@ public class App {
         Objectes einaDelTaller = new Objectes("Eina del taller", "Taller",
                 "Petita caixa d’eines antiga. Es pot utilitzar per reparar la nau!", true);
 
+<<<<<<< HEAD
         // Afegim cada objecte a l'habitació on es troba.
         mapa.getHabitacio(0).afegirObjecte(einaDelTaller);       // Tallers
         mapa.getHabitacio(1).afegirObjecte(vestitAstronauta);   // Vestuari
@@ -45,6 +50,14 @@ public class App {
         mapa.getHabitacio(5).afegirObjecte(donuts);             // Cuina
         mapa.getHabitacio(7).afegirObjecte(llanterna);          // Dormitori
         mapa.getHabitacio(7).afegirObjecte(targetaCompany);     // Dormitori
+=======
+        objectesJoc.add(llanterna);
+        objectesJoc.add(targetaPersonal);
+        objectesJoc.add(targetaCompany);
+        objectesJoc.add(vestitAstronauta);
+        objectesJoc.add(donuts);
+        objectesJoc.add(einaDelTaller);
+>>>>>>> 839a8d58ff7e18463db68b1310c6a5bb2d53fa8d
             
     }
 
