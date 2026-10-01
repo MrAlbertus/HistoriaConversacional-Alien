@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class App {
     Scanner sc = new Scanner(System.in);
-    
+
     private mapa mapa;
     private Jugador jugador;
     private boolean partidaActiva = true;
@@ -24,9 +24,10 @@ public class App {
 
         this.objectesJoc = new ArrayList<Objectes>();
 
-        //INICIALITZAR PERSONATGE (EN UN FUTUR PODER PREGUNTAR A l'USUARI EL NOM I FER-HO PERSONALITZAT)
+        // INICIALITZAR PERSONATGE (EN UN FUTUR PODER PREGUNTAR A l'USUARI EL NOM I
+        // FER-HO PERSONALITZAT)
         this.jugador = new Jugador("Bond", 100, "7", new ArrayList<Objectes>(), false);
-        
+
         // objectes de cada un dels ítems que s'utilitzen al joc
         Objectes llanterna = new Objectes("Llanterna", "x",
                 "Petita llanterna de color negre amb un botó per poder encendre la llum.", true);
@@ -42,23 +43,14 @@ public class App {
         Objectes einaDelTaller = new Objectes("Eina del taller", "Taller",
                 "Petita caixa d’eines antiga. Es pot utilitzar per reparar la nau!", true);
 
-<<<<<<< HEAD
         // Afegim cada objecte a l'habitació on es troba.
-        mapa.getHabitacio(0).afegirObjecte(einaDelTaller);       // Tallers
-        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta);   // Vestuari
-        mapa.getHabitacio(2).afegirObjecte(targetaPersonal);    // Oficines
-        mapa.getHabitacio(5).afegirObjecte(donuts);             // Cuina
-        mapa.getHabitacio(7).afegirObjecte(llanterna);          // Dormitori
-        mapa.getHabitacio(7).afegirObjecte(targetaCompany);     // Dormitori
-=======
-        objectesJoc.add(llanterna);
-        objectesJoc.add(targetaPersonal);
-        objectesJoc.add(targetaCompany);
-        objectesJoc.add(vestitAstronauta);
-        objectesJoc.add(donuts);
-        objectesJoc.add(einaDelTaller);
->>>>>>> 839a8d58ff7e18463db68b1310c6a5bb2d53fa8d
-            
+        mapa.getHabitacio(0).afegirObjecte(einaDelTaller); // Tallers
+        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta); // Vestuari
+        mapa.getHabitacio(2).afegirObjecte(targetaPersonal); // Oficines
+        mapa.getHabitacio(5).afegirObjecte(donuts); // Cuina
+        int habitacioLlanterna = (int) (Math.random() * 8);
+        mapa.getHabitacio(habitacioLlanterna).afegirObjecte(llanterna); //Habitació random
+        mapa.getHabitacio(7).afegirObjecte(targetaCompany); // Dormitori
     }
 
     public void menuP() {
@@ -66,10 +58,10 @@ public class App {
         System.out.println("1. Iniciar una partida nova");
         System.out.println("2. Sortir del joc ");
         System.out.println("==================================");
-    
+
     }
 
-    public void principal(){
+    public void principal() {
 
         // variable que permeti finalitzar el joc (sortir del bucle del joc)
         boolean jugant = true;
@@ -82,12 +74,12 @@ public class App {
             int opcioMenu = llegirEnters();
             switch (opcioMenu) {
                 case 1:
-                    //INICI DEL JOC
+                    // INICI DEL JOC
                     textIntro();
                     mostrarMapa();
                     metodeJoc();
                     break;
-                case 2: 
+                case 2:
                     jugant = false;
                     break;
                 default:
@@ -109,171 +101,185 @@ public class App {
         }
         return nombre;
     }
+
     public void mostrarMapa() {
-    System.out.println(
-        "                         ╭──────────────────────────────────────────╮\n" +
-        "                   ╭─────╯                                          ╰─────╮\n" +
-        "               ╭───╯                                                    ╰───╮\n" +
-        "            ╭──╯                                                            ╰──╮\n" +
-        "          ╭─╯                ┌───────────────────────┐                         ╰─╮\n" +
-        "        ╭─╯                  │        TALLERS        │                           ╰─╮\n" +
-        "       ╱                     │                       │                              ╲\n" +
-        "      ╱         ┌────────────┘                       └───────────────┐               ╲\n" +
-        "     │          │                                                    │                │\n" +
-        "     │          │   VESTUARI           OFICINES            BANYS     │                │\n" +
-        "     │          │                                                    │                │\n" +
-        "     │          │             │                       │              │                │\n" +
-        "     │          │             │                       │              │                │\n" +
-        "     │          │             │                       │              │                │\n" +
-        "     │          │             │     ╭───    ────╮     │              │                │\n" +
-        "     │          ├─────        ├─────╯           ╰─────┤        ──────┤                │\n" +
-        "     │          │             │    │ COMANDAMENT │    │              │                │\n" +
-        "     │          │             │     ╲           ╱     │              │                │\n" +
-        "     │          │             │      ╰─────────╯      │              │                │\n" +
-        "     │          │             │                       │              │                │\n" +
-        "     │          │             │                       │              │                │\n" +
-        "     │          │                                                    │                │\n" +
-        "     │          │   CUINA            MENJADOR          DORMITORI     │                │\n" +
-        "     │          │                                                    │                │\n" +
-        "      ╲         └────────────┐                       ┌───────────────┘               ╱\n" +
-        "       ╲                     │                       │                              ╱\n" +
-        "        ╰─╮                  │ SALA SORTIDA EXTERIOR │                           ╭─╯\n" +
-        "          ╰─╮                │                       │                         ╭─╯\n" +
-        "            ╰──╮             └───────────────────────┘                      ╭──╯\n" +
-        "               ╰───╮                      │                             ╭───╯\n" +
-        "                   ╰─────╮                │                       ╭─────╯\n" +
-        "                         ╰────────────────┼──────────────────────╯\n" +
-        "                                          │\n" +
-        "                                      ╭────────╮\n" +
-        "                                      PROPULSORS\n" +
-        "                                      ╰────────╯"
-    ); 
+        System.out.println(
+                "                         ╭──────────────────────────────────────────╮\n" +
+                        "                   ╭─────╯                                          ╰─────╮\n" +
+                        "               ╭───╯                                                    ╰───╮\n" +
+                        "            ╭──╯                                                            ╰──╮\n" +
+                        "          ╭─╯                ┌───────────────────────┐                         ╰─╮\n" +
+                        "        ╭─╯                  │        TALLERS        │                           ╰─╮\n" +
+                        "       ╱                     │                       │                              ╲\n" +
+                        "      ╱         ┌────────────┘                       └───────────────┐               ╲\n" +
+                        "     │          │                                                    │                │\n" +
+                        "     │          │   VESTUARI           OFICINES            BANYS     │                │\n" +
+                        "     │          │                                                    │                │\n" +
+                        "     │          │             │                       │              │                │\n" +
+                        "     │          │             │                       │              │                │\n" +
+                        "     │          │             │                       │              │                │\n" +
+                        "     │          │             │     ╭───    ────╮     │              │                │\n" +
+                        "     │          ├─────        ├─────╯           ╰─────┤        ──────┤                │\n" +
+                        "     │          │             │    │ COMANDAMENT │    │              │                │\n" +
+                        "     │          │             │     ╲           ╱     │              │                │\n" +
+                        "     │          │             │      ╰─────────╯      │              │                │\n" +
+                        "     │          │             │                       │              │                │\n" +
+                        "     │          │             │                       │              │                │\n" +
+                        "     │          │                                                    │                │\n" +
+                        "     │          │   CUINA            MENJADOR          DORMITORI     │                │\n" +
+                        "     │          │                                                    │                │\n" +
+                        "      ╲         └────────────┐                       ┌───────────────┘               ╱\n" +
+                        "       ╲                     │                       │                              ╱\n" +
+                        "        ╰─╮                  │ SALA SORTIDA EXTERIOR │                           ╭─╯\n" +
+                        "          ╰─╮                │                       │                         ╭─╯\n" +
+                        "            ╰──╮             └───────────────────────┘                      ╭──╯\n" +
+                        "               ╰───╮                      │                             ╭───╯\n" +
+                        "                   ╰─────╮                │                       ╭─────╯\n" +
+                        "                         ╰────────────────┼──────────────────────╯\n" +
+                        "                                          │\n" +
+                        "                                      ╭────────╮\n" +
+                        "                                      PROPULSORS\n" +
+                        "                                      ╰────────╯");
     }
 
-    public void textIntro(){
-            System.out.println("La nau PIAXII explora l'espai inhòspit en direcció al planeta SUMMEM on es creu que hi poden haver les condicions idònies per arrelar una nova vida.");
-            System.out.println("Desrpés d'un llarg període d'hivernació provocada pel llarg viatge, el capità Bond es desperta del son induït...");
-            System.out.println("iHall: Que tal ha dormit capità Bond? Em sap greu destorbar-lo però he detectat una anomalia a la nau. S'ha de reparar immediatament");
-            System.out.println("Bond: Coi de ferralla intel·ligent!");
-            System.out.println("En Bond està altament irritat ja que el somni no podia ser d'allò més excitant i realista...");
-            System.out.println("Bond: Espero que hagi estat indispensable que haver-me destorbat del son! Sinó prepara't per que et programi unes quantes sessions de Treball cooperatiu amb un pedagog inspirat...");
-            System.out.println("iHall: Li garanteixo capità que no és una falsa alarma, no m'arriscaria a patir un càstig similar...");
-            System.out.println("Bond: Està bé iHall, dona'm l'informe de la situació i anem per feina!");
-            System.out.println("iHall: Aqui va l'informe... Resulta que hem xocat contre un petit aeròlit que ha provocat petits danys al sistema de propulsió de la nau els quals necessiten intervenció humana.");
-            System.out.println("iHall: El teu objectiu és fer-te amb l'eina de reparació que està al taller de la nau i reparar els danys dels propulsors de la nau.");
-            System.out.println("Aquest és el mapa de la nau: ");
+    public void textIntro() {
+        System.out.println(
+                "La nau PIAXII explora l'espai inhòspit en direcció al planeta SUMMEM on es creu que hi poden haver les condicions idònies per arrelar una nova vida.");
+        System.out.println(
+                "Desrpés d'un llarg període d'hivernació provocada pel llarg viatge, el capità Bond es desperta del son induït...");
+        System.out.println(
+                "iHall: Que tal ha dormit capità Bond? Em sap greu destorbar-lo però he detectat una anomalia a la nau. S'ha de reparar immediatament");
+        System.out.println("Bond: Coi de ferralla intel·ligent!");
+        System.out.println(
+                "En Bond està altament irritat ja que el somni no podia ser d'allò més excitant i realista...");
+        System.out.println(
+                "Bond: Espero que hagi estat indispensable que haver-me destorbat del son! Sinó prepara't per que et programi unes quantes sessions de Treball cooperatiu amb un pedagog inspirat...");
+        System.out.println(
+                "iHall: Li garanteixo capità que no és una falsa alarma, no m'arriscaria a patir un càstig similar...");
+        System.out.println("Bond: Està bé iHall, dona'm l'informe de la situació i anem per feina!");
+        System.out.println(
+                "iHall: Aqui va l'informe... Resulta que hem xocat contre un petit aeròlit que ha provocat petits danys al sistema de propulsió de la nau els quals necessiten intervenció humana.");
+        System.out.println(
+                "iHall: El teu objectiu és fer-te amb l'eina de reparació que està al taller de la nau i reparar els danys dels propulsors de la nau.");
+        System.out.println("Aquest és el mapa de la nau: ");
     }
+
     public void metodeJoc() {
 
-    System.out.println("\nEscriu 'ajuda' per veure les accions possibles.");
+        System.out.println("\nEscriu 'ajuda' per veure les accions possibles.");
 
-    while (partidaActiva) {
-        System.out.print("\n> ");
-        String accio = sc.nextLine().toLowerCase();
+        while (partidaActiva) {
+            System.out.print("\n> ");
+            String accio = sc.nextLine().toLowerCase();
 
-        switch (accio) {
-            case "ajuda":
-                mostrarManual();
-                break;
+            switch (accio) {
+                case "ajuda":
+                    mostrarManual();
+                    break;
 
-            case "mapa":
-                mostrarMapa();
-                break;
+                case "mapa":
+                    mostrarMapa();
+                    break;
 
-            case "mirar":
-                mirarHabitacioActual();
-                break;
+                case "mirar":
+                    mirarHabitacioActual();
+                    break;
 
-            case "moure":
-                moureJugador();
-                break;
+                case "moure":
+                    moureJugador();
+                    break;
 
-            case "inventari":
-                // Aquí es mostrarà l'ArrayList de l'inventari (en cas de no tenir cap objecte, es mostrarà buit o et dira que no tens cap objecte)
-                break;
+                case "inventari":
+                    // Aquí es mostrarà l'ArrayList de l'inventari (en cas de no tenir cap objecte,
+                    // es mostrarà buit o et dira que no tens cap objecte)
+                    break;
 
-            case "agafar":
-                System.out.print("Quin objecte vols agafar? ");
-                String objecteAgafar = sc.nextLine();
+                case "agafar":
+                    System.out.print("Quin objecte vols agafar? ");
+                    String objecteAgafar = sc.nextLine();
 
-                System.out.println("Has intentat agafar: " + objecteAgafar);
-                //Aquí haurem de posar el codi per tal de que verifiqui que l'objecte estigui a la sala i te l'afegeixi a l'inventari
-                break;
+                    System.out.println("Has intentat agafar: " + objecteAgafar);
+                    // Aquí haurem de posar el codi per tal de que verifiqui que l'objecte estigui a
+                    // la sala i te l'afegeixi a l'inventari
+                    break;
 
-            case "usar":
-                System.out.print("Quin objecte vols utilitzar? ");
-                String objecteUsar = sc.nextLine();
+                case "usar":
+                    System.out.print("Quin objecte vols utilitzar? ");
+                    String objecteUsar = sc.nextLine();
 
-                System.out.println("Has intentat utilitzar: " + objecteUsar);
-                // Aquí anirà el codi de cada un dels objectes (quan l'utilitzin)
-                break;
+                    System.out.println("Has intentat utilitzar: " + objecteUsar);
+                    // Aquí anirà el codi de cada un dels objectes (quan l'utilitzin)
+                    break;
 
-            case "sortir":
-                System.out.println("Has abandonat la partida.");
-                partidaActiva = false;
-                break;
+                case "sortir":
+                    System.out.println("Has abandonat la partida.");
+                    partidaActiva = false;
+                    break;
 
-            default:
-                System.out.println("No entenc aquesta acció. Escriu 'ajuda' per veure el manual.");
-                break;
+                default:
+                    System.out.println("No entenc aquesta acció. Escriu 'ajuda' per veure el manual.");
+                    break;
+            }
         }
     }
-}
-public void mirarHabitacioActual() {
-    int posicio = Integer.parseInt(jugador.getPosicio());
-    Habitacio habitacioActual = mapa.getHabitacio(posicio);
 
-    if (habitacioActual == null) {
-        System.out.println("No s'ha pogut trobar l'habitació actual.");
-        return;
+    public void mirarHabitacioActual() {
+        int posicio = Integer.parseInt(jugador.getPosicio());
+        Habitacio habitacioActual = mapa.getHabitacio(posicio);
+
+        if (habitacioActual == null) {
+            System.out.println("No s'ha pogut trobar l'habitació actual.");
+            return;
+        }
+
+        habitacioActual.mirar();
     }
 
-    habitacioActual.mirar();
-}
-public void mostrarManual() {
-    System.out.println("\n========== MANUAL D'INSTRUCCIONS ==========");
-    System.out.println("ajuda           - Mostra les accions possibles.");
-    System.out.println("mapa            - Mostra el mapa de la nau.");
-    System.out.println("mirar           - Mira la sala on et trobes.");
-    System.out.println("moure           - Moure't a una habitació");
-    System.out.println("inventari       - Mostra els objectes que portes.");
-    System.out.println("agafar          - Intenta agafar un objecte.");
-    System.out.println("usar            - Intenta utilitzar un objecte.");
-    System.out.println("sortir          - Abandona la partida i torna al menú inicial.");
-    System.out.println("===========================================");
-}
-public void moureJugador(){
-
-    int posActual = Integer.parseInt(jugador.getPosicio());
-    Habitacio habActual = mapa.getHabitacio(posActual);
-
-    mostrarMapa();
-    System.out.println("Ets a: " + habActual.getNom());
-    System.out.println("Cap a quina direcció et vols moure? (Dreta, esquerra, adalt o abaix)");
-    String direccio = sc.nextLine().toLowerCase();
-
-    //DIRECCIONS
-    
-    int desti = -1;
-    
-    if (direccio.equals("adalt")) {
-        desti = habActual.getAdalt();
-        System.out.println(desti);
-    } else if (direccio.equals("abaix")) {
-        desti = habActual.getAbaix();
-        System.out.println(desti);
-    } else if (direccio.equals("esquerra")) {
-        desti = habActual.getEsquerra();
-        System.out.println(desti);
-    } else if (direccio.equals("dreta")) {
-        desti = habActual.getDreta();
-        System.out.println(desti);
-    } else {
-        System.out.println("Direcció no vàlida! Tria entre: adalt, abaix, esquerra o dreta.");
-        return;
+    public void mostrarManual() {
+        System.out.println("\n========== MANUAL D'INSTRUCCIONS ==========");
+        System.out.println("ajuda           - Mostra les accions possibles.");
+        System.out.println("mapa            - Mostra el mapa de la nau.");
+        System.out.println("mirar           - Mira la sala on et trobes.");
+        System.out.println("moure           - Moure't a una habitació");
+        System.out.println("inventari       - Mostra els objectes que portes.");
+        System.out.println("agafar          - Intenta agafar un objecte.");
+        System.out.println("usar            - Intenta utilitzar un objecte.");
+        System.out.println("sortir          - Abandona la partida i torna al menú inicial.");
+        System.out.println("===========================================");
     }
 
-    if (desti != -1) {
+    public void moureJugador() {
+
+        int posActual = Integer.parseInt(jugador.getPosicio());
+        Habitacio habActual = mapa.getHabitacio(posActual);
+
+        mostrarMapa();
+        System.out.println("Ets a: " + habActual.getNom());
+        System.out.println("Cap a quina direcció et vols moure? (Dreta, esquerra, adalt o abaix)");
+        String direccio = sc.nextLine().toLowerCase();
+
+        // DIRECCIONS
+
+        int desti = -1;
+
+        if (direccio.equals("adalt")) {
+            desti = habActual.getAdalt();
+            System.out.println(desti);
+        } else if (direccio.equals("abaix")) {
+            desti = habActual.getAbaix();
+            System.out.println(desti);
+        } else if (direccio.equals("esquerra")) {
+            desti = habActual.getEsquerra();
+            System.out.println(desti);
+        } else if (direccio.equals("dreta")) {
+            desti = habActual.getDreta();
+            System.out.println(desti);
+        } else {
+            System.out.println("Direcció no vàlida! Tria entre: adalt, abaix, esquerra o dreta.");
+            return;
+        }
+
+        if (desti != -1) {
             // Condició de mort: entrar a la Sala Sortida Exterior (sala 8) sense vestit
             if (desti == 8 && !jugador.getVestitPosat()) {
                 System.out.println("\n========================================================");
@@ -285,8 +291,8 @@ public void moureJugador(){
                 return;
             }
 
-    // Actualitzem la posició del jugador
-        // 1. Convertim el número 'desti' a text i actualitzem la posició del personatge
+            // Actualitzem la posició del jugador
+            // 1. Convertim el número 'desti' a text i actualitzem la posició del personatge
             jugador.setPosicio(String.valueOf(desti));
 
             // 2. Busquem la nova habitació al mapa amb el nou índex
@@ -297,6 +303,6 @@ public void moureJugador(){
             System.out.println("T'has mogut a: " + habNova.getNom());
             System.out.println(habNova.getDescripcio());
             System.out.println("-------------------------------------------");
-    }}
+        }
+    }
 }
-
