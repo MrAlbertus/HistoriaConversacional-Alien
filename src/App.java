@@ -45,16 +45,16 @@ public class App {
                 "Petita caixa d’eines antiga. Es pot utilitzar per reparar la nau!", true);
 
         // Afegim cada objecte a l'habitació on es troba.
-        mapa.getHabitacio(0).afegirObjecte(einaDelTaller); // Tallers[cite: 11]
-        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta); // Vestuari[cite: 11]
-        mapa.getHabitacio(2).afegirObjecte(targetaPersonal); // Oficines[cite: 11]
-        mapa.getHabitacio(5).afegirObjecte(donuts); // Cuina[cite: 11]
+        mapa.getHabitacio(0).afegirObjecte(einaDelTaller);
+        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta);]
+        mapa.getHabitacio(2).afegirObjecte(targetaPersonal);
+        mapa.getHabitacio(5).afegirObjecte(donuts);
         
         int habitacioLlanterna = (int) (Math.random() * 8);
-        llanterna.setPosicio(mapa.getHabitacio(habitacioLlanterna).getNom()); // Assignem la posició random a la llanterna[cite: 11, 12]
-        mapa.getHabitacio(habitacioLlanterna).afegirObjecte(llanterna); // Habitació random[cite: 7, 11]
+        llanterna.setPosicio(mapa.getHabitacio(habitacioLlanterna).getNom()); // Assignem la posició random a la llanterna
+        mapa.getHabitacio(habitacioLlanterna).afegirObjecte(llanterna); // Habitació random
         
-        mapa.getHabitacio(7).afegirObjecte(targetaCompany); // Dormitori[cite: 11]
+        mapa.getHabitacio(7).afegirObjecte(targetaCompany); // Dormitori
 
         // AFEGIR ELS OBJECTES A objectesJoc PERQUÈ EL FOR D'AGAFAROBJECTE ELS PUGUI TROBAR
         objectesJoc.add(einaDelTaller);
@@ -230,8 +230,8 @@ public class App {
     }
 
     public void mirarHabitacioActual() {
-        int posicio = Integer.parseInt(jugador.getPosicio()); //[cite: 6]
-        Habitacio habitacioActual = mapa.getHabitacio(posicio); //[cite: 11]
+        int posicio = Integer.parseInt(jugador.getPosicio()); 
+        Habitacio habitacioActual = mapa.getHabitacio(posicio); 
 
         if (habitacioActual == null) {
             System.out.println("No s'ha pogut trobar l'habitació actual.");
@@ -256,11 +256,11 @@ public class App {
 
     public void moureJugador() {
 
-        int posActual = Integer.parseInt(jugador.getPosicio()); //[cite: 6]
-        Habitacio habActual = mapa.getHabitacio(posActual); //[cite: 11]
+        int posActual = Integer.parseInt(jugador.getPosicio()); 
+        Habitacio habActual = mapa.getHabitacio(posActual); 
 
         mostrarMapa();
-        System.out.println("Ets a: " + habActual.getNom()); //[cite: 7]
+        System.out.println("Ets a: " + habActual.getNom()); 
         System.out.println("Cap a quina direcció et vols moure? (Dreta, esquerra, adalt o abaix)");
         String direccio = sc.nextLine().toLowerCase();
 
@@ -269,16 +269,16 @@ public class App {
         int desti = -1;
 
         if (direccio.equals("adalt")) {
-            desti = habActual.getAdalt(); //[cite: 7]
+            desti = habActual.getAdalt(); 
             System.out.println(desti);
         } else if (direccio.equals("abaix")) {
-            desti = habActual.getAbaix(); //[cite: 7]
+            desti = habActual.getAbaix(); 
             System.out.println(desti);
         } else if (direccio.equals("esquerra")) {
-            desti = habActual.getEsquerra(); //[cite: 7]
+            desti = habActual.getEsquerra(); 
             System.out.println(desti);
         } else if (direccio.equals("dreta")) {
-            desti = habActual.getDreta(); //[cite: 7]
+            desti = habActual.getDreta(); 
             System.out.println(desti);
         } else {
             System.out.println("Direcció no vàlida! Tria entre: adalt, abaix, esquerra o dreta.");
@@ -287,7 +287,7 @@ public class App {
 
         if (desti != -1) {
             // Condició de mort: entrar a la Sala Sortida Exterior (sala 8) sense vestit
-            if (desti == 8 && !jugador.getVestitPosat()) { //[cite: 9]
+            if (desti == 8 && !jugador.getVestitPosat()) { 
                 System.out.println("\n========================================================");
                 System.out.println("ALERTA! Has obert la porta exterior sense el vestit!");
                 System.out.println("L'aire s'escapa al buit i et quedes sense oxigen a l'instant.");
@@ -299,15 +299,15 @@ public class App {
 
             // Actualitzem la posició del jugador
             // 1. Convertim el número 'desti' a text i actualitzem la posició del personatge
-            jugador.setPosicio(String.valueOf(desti)); //[cite: 6]
+            jugador.setPosicio(String.valueOf(desti));
 
             // 2. Busquem la nova habitació al mapa amb el nou índex
-            Habitacio habNova = mapa.getHabitacio(desti); //[cite: 11]
+            Habitacio habNova = mapa.getHabitacio(desti);
 
             // 3. Mostrem la confirmació del trasllat i la descripció de la sala
             System.out.println("\n-------------------------------------------");
-            System.out.println("T'has mogut a: " + habNova.getNom()); //[cite: 7]
-            System.out.println(habNova.getDescripcio()); //[cite: 7]
+            System.out.println("T'has mogut a: " + habNova.getNom()); 
+            System.out.println(habNova.getDescripcio()); 
             System.out.println("-------------------------------------------");
         }
     }
@@ -317,21 +317,21 @@ public class App {
         System.out.print("Quin objecte vols agafar? ");
         String objecteAgafar = sc.nextLine().trim();
 
-        int posActual = Integer.parseInt(jugador.getPosicio()); //[cite: 6]
-        Habitacio habActual = mapa.getHabitacio(posActual); //[cite: 11]
+        int posActual = Integer.parseInt(jugador.getPosicio()); 
+        Habitacio habActual = mapa.getHabitacio(posActual); 
 
         boolean trobat = false;
 
         for (Objectes objecte : objectesJoc) {
 
             if (objecte.getTipus().equalsIgnoreCase(objecteAgafar)
-                    && objecte.getPosicio().equalsIgnoreCase(habActual.getNom())) { //[cite: 7, 12]
+                    && objecte.getPosicio().equalsIgnoreCase(habActual.getNom())) { 
 
-                jugador.afegirObjecte(objecte); //[cite: 9]
-                habActual.treureObjecte(objecte); // El traiem de l'habitació perquè no hi quedi[cite: 7]
+                jugador.afegirObjecte(objecte); 
+                habActual.treureObjecte(objecte); // El traiem de l'habitació perquè no hi quedi
                 objectesJoc.remove(objecte);
 
-                System.out.println("Has agafat: " + objecte.getTipus()); //[cite: 12]
+                System.out.println("Has agafat: " + objecte.getTipus());
 
                 trobat = true;
                 break;
@@ -345,13 +345,13 @@ public class App {
 
     public void mostrarInventari() {
 
-        if (jugador.getMotxilla().isEmpty()) { //[cite: 9]
+        if (jugador.getMotxilla().isEmpty()) { 
             System.out.println("No tens cap objecte a la motxilla.");
         } else {
             System.out.println("Objectes de la motxilla:");
 
-            for (Objectes objecte : jugador.getMotxilla()) { //[cite: 9]
-                System.out.println("- " + objecte.getTipus()); //[cite: 12]
+            for (Objectes objecte : jugador.getMotxilla()) { 
+                System.out.println("- " + objecte.getTipus());
             }
         }
     }
