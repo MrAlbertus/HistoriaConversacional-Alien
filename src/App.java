@@ -14,7 +14,6 @@ public class App {
 
         App p = new App();
         p.principal();
-
     }
 
     public void inicialitzar() {
