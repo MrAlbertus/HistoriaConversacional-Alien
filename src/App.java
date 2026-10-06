@@ -45,7 +45,7 @@ public class App {
 
         // Afegim cada objecte a l'habitació on es troba.
         mapa.getHabitacio(0).afegirObjecte(einaDelTaller);
-        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta);]
+        mapa.getHabitacio(1).afegirObjecte(vestitAstronauta);
         mapa.getHabitacio(2).afegirObjecte(targetaPersonal);
         mapa.getHabitacio(5).afegirObjecte(donuts);
         
